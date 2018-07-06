@@ -1,0 +1,73 @@
+
+
+const APP = require('../app');
+const DEBUG = require('debug')('scrap:server');
+
+
+
+const PORT = normalizePort(process.env.PORT || '3500');
+APP.set('port', PORT);
+
+
+    // set our app to listen to the port we set above
+    const SERVER = APP.listen(APP.get('port'), function() {
+      // then save a log of the listening to our debugger.
+      DEBUG('Express server listening on port ' + SERVER.address().PORT);
+  });
+
+
+function normalizePort(val) {
+  var PORT = parseInt(val, 10);
+
+  if (isNaN(PORT)) {
+    // named pipe
+    return val;
+  }
+
+  if (PORT >= 0) {
+    // PORT number
+    return PORT;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  let bind = typeof PORT === 'string'
+    ? 'Pipe ' + PORT
+    : 'port ' + PORT;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  let addr = server.address();
+  let bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  DEBUG('Listening on ' + bind);
+}

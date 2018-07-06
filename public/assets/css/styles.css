@@ -1,0 +1,7 @@
+li.nav-item {
+    line-height: 3rem;
+}
+
+.jumbotron {
+    background: #ffffff url("../img/technology-jumbo.jpg") no-repeat right top;
+}

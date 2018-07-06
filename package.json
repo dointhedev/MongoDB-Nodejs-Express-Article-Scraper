@@ -1,0 +1,44 @@
+{
+  "name": "mern-article-scraper",
+  "version": "1.0.0",
+  "description": "In this demo I use scraping to populate articles into a MongoDB",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://dointhedev@github.com/dointhedev/MongoDB-Nodejs-Express-Article-Scraper.git"
+  },
+  "keywords": [
+    "Nodejs",
+    "MongoDB",
+    "Expressjs",
+    "Cheerio",
+    "Scraping"
+  ],
+  "author": "Avi Davis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dointhedev/MongoDB-Nodejs-Express-Article-Scraper/issues"
+  },
+  "homepage": "https://github.com/dointhedev/MongoDB-Nodejs-Express-Article-Scraper#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cheerio": "^1.0.0-rc.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "http-errors": "^1.6.3",
+    "mongoose": "^5.2.1",
+    "morgan": "^1.9.0",
+    "path": "^0.12.7",
+    "request": "^2.87.0",
+    "axios": "^0.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
