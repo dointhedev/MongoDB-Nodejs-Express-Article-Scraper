@@ -11,9 +11,25 @@ const HeadlineSchema = new Schema({
     type: String,
     required: true
   },
+  image: {
+    type: String,
+    required: true
+  },
+  excerpt: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: String,
+    required: true
+  },
   // `link` is required and of type String
   link: {
     type: String,
+    required: true
+  },
+  added: {
+    type: Boolean,
     required: true
   },
   // `note` is an object that stores a Note id
