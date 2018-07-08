@@ -27,7 +27,15 @@ APP.use(BODYPARSER.json());
 APP.use(BODYPARSER.urlencoded({ extended: false }));
 APP.use(EXPRESS.static(PATH.join(__dirname, 'public')));
 
-MONGOOSE.connect("mongodb://localhost/newsappdb");
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsappd";
+
+// Set mongoose to leverage built in JavaScript ES6 Promises
+// Connect to the Mongo DB
+MONGOOSE.Promise = Promise;
+MONGOOSE.connect(MONGODB_URI, {
+  useMongoClient: true
+});
 
 // routes ======================================================================
 require('./router.js')(APP); 
