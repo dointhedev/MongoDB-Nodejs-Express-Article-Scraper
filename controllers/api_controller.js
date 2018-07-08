@@ -12,7 +12,6 @@ module.exports = {
         AXIOS.get(baseURL).then(function (response) {
             // Then, we load that into cheerio and save it to $ for a shorthand selector
             var $ = CHEERIO.load(response.data);
-            console.log(response.data);
             // Now, we grab every h2 within an article tag, and do the following:
             var results = [];
 
@@ -67,5 +66,22 @@ module.exports = {
                 // If an error occurred, send it to the client
                 res.json(err);
             });
+    },
+    clear: function (req, res, next) {
+        DB.Headline.remove({}, function (error, response) {
+            // Log any errors to the console
+            if (error) {
+                console.log(error);
+                res.send(error);
+            } else {
+                console.log(response);
+                res.send(response);
+            }
+        });
+    },
+    save: function (req, res, next) {
+        DB.Headline.findOneAndUpdate({ _id: req.params.id }, {$set: {"added": true}
+            // Log any errors to the console
+        });
     }
 }
