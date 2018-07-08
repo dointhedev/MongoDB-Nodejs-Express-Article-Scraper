@@ -22,7 +22,7 @@ module.exports = {
                 // Save the text of the h4-tag as "title"
                 var title = $(this).text();
                 var link = $(this).children("a").attr("href");
-                var date = $(this).siblings(".date").text();
+                var date = $npm(this).siblings(".date").text();
                 var excerpt = $(this).siblings(".teaser").text();
                 var image = $(this).siblings(".image").children("a").children("img").attr("src");
                 var added = false;
