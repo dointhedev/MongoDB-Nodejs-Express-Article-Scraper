@@ -5,6 +5,8 @@ const COOKIEPARSER = require('cookie-parser');
 const LOGGER = require('morgan');
 const BODYPARSER = require('body-parser');
 const MONGOOSE = require("mongoose");
+require("dotenv")
+
 
 const APP = EXPRESS();
 
@@ -27,12 +29,10 @@ APP.use(EXPRESS.static(PATH.join(__dirname, 'public')));
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsappd";
 
-// Set mongoose to leverage built in JavaScript ES6 Promises
-// Connect to the Mongo DB
-MONGOOSE.Promise = Promise;
-MONGOOSE.connect(MONGODB_URI, {
-  useMongoClient: true
-});
+//MONGOOSE.connect("mongodb://localhost/newsappd");
+
+MONGOOSE.connect(MONGODB_URI);
+
 
 // routes ======================================================================
 require('./router.js')(APP); 

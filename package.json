@@ -5,7 +5,7 @@
   "main": "app.js",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "nodemon ./bin/www",
     "test": "mocha"
   },
   "repository": {
@@ -26,17 +26,18 @@
   },
   "homepage": "https://github.com/dointhedev/MongoDB-Nodejs-Express-Article-Scraper#readme",
   "dependencies": {
+    "axios": "^0.16.2",
     "body-parser": "^1.17.1",
     "cheerio": "^1.0.0-rc.2",
     "cookie-parser": "^1.4.3",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "http-errors": "^1.6.3",
     "mongoose": "^5.2.1",
     "morgan": "^1.9.0",
     "path": "^0.12.7",
-    "request": "^2.87.0",
-    "axios": "^0.16.2"
+    "request": "^2.87.0"
   },
   "devDependencies": {
     "nodemon": "^1.17.5"
