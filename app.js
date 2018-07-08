@@ -6,9 +6,6 @@ const LOGGER = require('morgan');
 const BODYPARSER = require('body-parser');
 const MONGOOSE = require("mongoose");
 
-// Require all models
-var db = require("./models");
-
 const APP = EXPRESS();
 
 // view engine setup
