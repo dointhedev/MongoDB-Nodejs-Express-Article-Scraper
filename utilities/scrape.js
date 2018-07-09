@@ -4,6 +4,7 @@
 // It works on the client and on the server
 const AXIOS = require("axios");
 const CHEERIO = require("cheerio");
+var results = [];
 
 
 const baseURL = 'https://www.technewsworld.com';
@@ -11,7 +12,6 @@ AXIOS.get(baseURL).then(function (response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = CHEERIO.load(response.data);
     // Now, we grab every h2 within an article tag, and do the following:
-    var results = [];
 
 
     // With cheerio, find each h4-tag with the class "headline-link" and loop through the results
