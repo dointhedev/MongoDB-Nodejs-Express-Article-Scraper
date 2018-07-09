@@ -4,7 +4,7 @@ const AXIOS = require("axios");
 const CHEERIO = require("cheerio");
 
 // Require all models
-const DB = require("../models");
+const DB = require("../models/Headline");
 
 module.exports = {
     fetch: function (req, res, next) {
