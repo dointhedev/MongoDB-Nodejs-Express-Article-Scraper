@@ -5,8 +5,7 @@ const COOKIEPARSER = require('cookie-parser');
 const LOGGER = require('morgan');
 const BODYPARSER = require('body-parser');
 const MONGOOSE = require("mongoose");
-require("dotenv")
-
+require('dotenv').config()
 
 const APP = EXPRESS();
 
@@ -27,11 +26,21 @@ APP.use(BODYPARSER.urlencoded({ extended: false }));
 APP.use(EXPRESS.static(PATH.join(__dirname, 'public')));
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+
+var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
+                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };       
+ 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsappd";
 
-//MONGOOSE.connect("mongodb://localhost/newsappd");
-
-MONGOOSE.connect(MONGODB_URI);
+ 
+MONGOOSE.connect(MONGODB_URI, options);
+var conn = MONGOOSE.connection;             
+ 
+conn.on('error', console.error.bind(console, 'connection error:'));  
+ 
+conn.once('open', function() {
+  // Wait for the database connection to establish, then start the app.                         
+});
 
 
 // routes ======================================================================
